@@ -66,6 +66,8 @@ def get_stats_on_date(accum, in_date):
     the accum parameter.  Return that new accum value.
     """
     sfile = os.sep.join(["..", "data", f"rot{in_date}.json"])
+    if not os.path.exists(sfile):
+        return accum
     with open(sfile, "r", encoding="utf8") as fdesc:
         data = json.load(fdesc)
     for entry in data:
